@@ -1,12 +1,12 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+    'Students',
+    'Faculty',
+    "What's New",
+    'Tech Trends',
+    'Music',
+    'Log Out'
 ];
 
 /* 
@@ -33,3 +33,39 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+//create Function
+//create Elements
+//cycle through function parameter using forEach
+// inside forEach create elements for cycle
+//add content to forEach Parameter
+//append created element to forEach function name
+function createMenu(menuItems) {
+
+    const newMenu = document.createElement('div')
+    const menuList = document.createElement('ul')
+        //forEach to cycle through the ul adding li
+    menuItems.forEach(items => {
+            let menuItems = document.createElement('li')
+
+            menuItems.textContent = items;
+            //append li to ul
+            menuList.append(menuItems)
+        })
+        // append ul to div
+    newMenu.append(menuList)
+
+    const menuHidden = document.querySelector('.menu-button')
+        //refernce the div
+    newMenu.classList.add('menu')
+        //toggle menu
+    menuHidden.addEventListener('click', () => {
+        //menu- -open
+        newMenu.classList.toggle('menu--open')
+    })
+
+    return newMenu;
+}
+//selecting the parent element
+const menuHeader = document.querySelector('.header')
+    //appening the menu and its items to the parent element
+menuHeader.append(createMenu(menuItems))
